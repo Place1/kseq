@@ -4,9 +4,5 @@
     "target": "es5",
     "module": "commonjs",
     "sourceMap": true
-  },
-  "files": [
-    "typings/main.d.ts",
-    "src/index.ts"
-  ]
+  }
 }

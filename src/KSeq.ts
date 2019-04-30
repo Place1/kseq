@@ -161,7 +161,7 @@ export class KSeq<T> {
     return {
       n: this.name,
       t: this.time,
-      s: this.atoms.map((atom) => [atom.id.toString(), atom.value]),
+      s: this.atoms.map((atom) => [atom.id.toString(), atom.value]) as Array<[string, T]>,
       r: this.removed.toJSON()
     }
   }
