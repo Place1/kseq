@@ -157,12 +157,23 @@ export class KSeq<T> {
    * Converts the sequence to a compact object suitable for serialization.
    * @returns A serializable object.
    */
-  toJSON(): Object {
+  toJSON(): SerializedKSeq<T> {
     return {
       n: this.name,
       t: this.time,
       s: this.atoms.map((atom) => [atom.id.toString(), atom.value]),
       r: this.removed.toJSON()
+    }
+  }
+
+  /**
+   * Load the given serialized KSeq structure into this instance of KSeq.
+   * Does not load the KSeq name.
+   */
+  fromJSON(json: SerializedKSeq<T>) {
+    this.time = json.t;
+    for (const atom of json.s) {
+      this.atoms.add(Ident.parse(atom[0]), atom[1]);
     }
   }
 
@@ -202,4 +213,11 @@ export class KSeq<T> {
     return Math.floor(new Date().valueOf() / 1000);
   }
 
+}
+
+export interface SerializedKSeq<T> {
+  n: string; // name
+  t: number; // time
+  s: Array<[string, T]>; // array of serialized atoms
+  r: Array<string>; // removed ids
 }
