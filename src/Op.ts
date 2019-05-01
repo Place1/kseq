@@ -107,7 +107,8 @@ export class InsertOp extends Op {
    * @returns An instance of the encoded InsertOp.
    */
   static parse(str: string): InsertOp {
-    let [timestamp, replica, id, value] = str.substr(1).split('/', 4);
+    let [timestamp, replica, id] = str.substr(1).split('/', 3);
+    const value = str.slice(timestamp.length + replica.length + id.length + 4);
     return new InsertOp(replica, Number(timestamp), Ident.parse(id), JSON.parse(value));
   }
 
