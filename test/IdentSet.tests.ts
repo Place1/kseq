@@ -1,3 +1,4 @@
+import 'mocha';
 import {IdentSet, Ident} from '../src/idents';
 import {assert} from 'chai';
 

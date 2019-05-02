@@ -103,7 +103,7 @@ export class Ident {
    * @returns The string representation.
    */
   toString(): string {
-    let prev = undefined;
+    let prev: any = undefined;
     let path = this.path.map((seg) => {
       if (seg.replica == prev) {
         return seg.digit;

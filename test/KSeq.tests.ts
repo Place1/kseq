@@ -1,3 +1,4 @@
+import 'mocha';
 import {KSeq, OpKind, InsertOp, RemoveOp} from '../src';
 import {Ident} from '../src/idents';
 import {assert} from 'chai';
@@ -6,7 +7,7 @@ function getWallTime(): number {
   return Math.floor(new Date().valueOf() / 1000);
 }
 
-function randomize(arr) {
+function randomize(arr: any[]) {
   for (let i = arr.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
     let temp = arr[i];

@@ -62,7 +62,7 @@ export class KSeq<T> {
    */
   depth(): number {
     let max = 0;
-    this.forEach((atom) => {
+    this.atoms.forEach((atom) => {
       let depth = atom.id.depth();
       if (max < depth) max = depth;
     });
@@ -114,7 +114,7 @@ export class KSeq<T> {
       return op;
     }
 
-    return null;
+    return null!;
   }
 
   /**
@@ -125,14 +125,14 @@ export class KSeq<T> {
    */
   get(pos: number): T {
     const atom = this.atoms.get(pos);
-    return atom ? atom.value : undefined;
+    return atom ? atom.value : undefined!;
   }
 
   /**
    * Applies a function to each of the values in the sequence.
    * @param func The function to apply.
    */
-  forEach(func: { (T): void }): void {
+  forEach(func: { (arg0: T): void }): void {
     this.atoms.forEach((atom) => func(atom.value));
   }
 
@@ -141,7 +141,7 @@ export class KSeq<T> {
    * @param func The transformation function to apply.
    * @returns An array containing the results of the function calls.
    */
-  map<R>(func: { (T): R }): R[] {
+  map<R>(func: { (arg0: T): R }): R[] {
     return this.atoms.map((atom) => func(atom.value));
   }
 

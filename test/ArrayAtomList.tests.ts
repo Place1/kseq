@@ -1,5 +1,6 @@
+import 'mocha';
 import {ArrayAtomList} from '../src/storage';
-import {Ident, Segment} from '../src/idents';
+import {Ident} from '../src/idents';
 import {assert} from 'chai';
 
 describe("ArrayAtomList", () => {
@@ -153,7 +154,7 @@ describe("ArrayAtomList", () => {
       let y = Ident.parse("1#1:foo");
       list.add(x, 'line one');
       list.add(y, 'line two');
-      let calls = [];
+      let calls = new Array<string>();
       list.forEach((atom) => calls.push(atom.value));
       assert.deepEqual(calls, ['line one', 'line two']);
     });

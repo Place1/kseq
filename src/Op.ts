@@ -62,6 +62,7 @@ export abstract class Op {
       case '+': return InsertOp.parse(str);
       case '-': return RemoveOp.parse(str);
     }
+    throw new Error('unknown operation');
   }
 
   /**
